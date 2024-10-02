@@ -1,6 +1,6 @@
 "use client"
 import React, { useEffect, useState } from 'react';
-import { useForm, Controller } from 'react-hook-form';
+import { useForm} from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Form, FormField, FormItem, FormLabel, FormControl, FormMessage } from '~/components/ui/form';
@@ -25,7 +25,7 @@ export default function Contact() {
     },
   });
 
-  const handleSubmit = (data : any) => {
+  const handleSubmit = (data: { name: string; email: string; question: string }) => {
     toast({
       title: 'Question Submitted',
       description: 'We will get back to you soon',

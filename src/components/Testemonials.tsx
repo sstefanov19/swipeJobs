@@ -24,7 +24,7 @@ function TestimonialCard({ name, role, company, quote, imageSrc } : TestemonialC
           <p className="text-slate-400 text-sm">{role} at {company}</p>
         </div>
       </div>
-      <p className="text-slate-300 italic">"{quote}"</p>
+      <p className="text-slate-300 italic">&quot;{quote}&quot;</p>
     </div>
   )
 }
