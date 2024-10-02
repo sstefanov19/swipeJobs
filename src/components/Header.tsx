@@ -6,7 +6,7 @@ import { Button } from "~/components/Button";
 export default function Header() {
   const { isSignedIn } = useUser();
   return (
-    <header className="relative z-10 flex h-[75px] items-center justify-between">
+    <header className="relative z-10 flex h-[75px] items-center justify-between border-black border-b-2">
       <Link href="/">
         <h1 className="bg-gradient-to-r from-slate-400 to-slate-600 bg-clip-text text-2xl font-bold text-transparent sm:text-3xl">
           SwipeHire
@@ -20,10 +20,10 @@ export default function Header() {
           About
         </Link>
         <Link
-          href="/employers"
+          href="/jobs"
           className="text-slate-600 transition-colors hover:text-white"
         >
-          For Employers
+          Jobs
         </Link>
         <Link
           href="/contact"
