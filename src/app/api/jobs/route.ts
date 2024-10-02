@@ -11,6 +11,7 @@ export async function GET() {
       throw new Error('Failed to fetch jobs');
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     const data = await response.json();
     return NextResponse.json(data);
   } catch (error) {
