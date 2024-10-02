@@ -42,9 +42,9 @@ export default function Jobs() {
   };
 
   return (
-    <main className="flex min-h-screen w-full mt-16 justify-center px-4 sm:px-6 lg:px-8">
-    <div className="w-full max-w-2xl">
-      <h1 className="mb-8 text-3xl font-bold text-slate-700">Job Listings</h1>
+    <main className="flex min-h-screen w-full  justify-center px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-600 to-slate-400">
+    <div className="w-ful  max-w-2xl">
+      <h1 className="mb-8 text-3xl font-bold text-center mt-16 text-slate-100">Job Listings</h1>
       {isLoading ? (
         <div className="bg-slate-800 rounded-lg p-6 shadow-lg animate-pulse">
           <div className="h-6 bg-slate-700 rounded w-3/4 mb-4"></div>
@@ -57,7 +57,7 @@ export default function Jobs() {
           <p>{error}</p>
         </div>
       ) : job ? (
-        <div className="bg-slate-800 rounded-lg overflow-hidden shadow-lg">
+        <div className="bg-slate-800  rounded-lg overflow-hidden shadow-lg">
           <div className="p-6">
             <h2 className="text-2xl font-semibold text-slate-100 mb-2">{job.title}</h2>
             <p className="text-slate-300 mb-4">{job.description}</p>

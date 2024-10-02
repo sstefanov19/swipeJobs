@@ -44,8 +44,8 @@ export default function Contact() {
   }
 
   return (
-    <main className='min-h-screen flex flex-col items-center justify-center p-8 bg-gradient-to-br from-slate-800 to-slate-600'>
-      <h1 className='text-white text-4xl font-bold mb-8'>Contact Us</h1>
+    <main className='min-h-screen flex flex-col items-center  p-8 bg-gradient-to-br from-slate-600 to-slate-400'>
+      <h1 className='text-white text-4xl font-bold mt-16 mb-8'>Contact Us</h1>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(handleSubmit)} className='max-w-md w-full flex flex-col gap-6 bg-slate-700 p-8 rounded-lg shadow-lg'>
           <FormField control={form.control} name="name" render={({ field }) => (
