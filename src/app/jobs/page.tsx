@@ -30,7 +30,7 @@ export default function Jobs() {
   const [canSwipe, setCanSwipe] = useState(true);
   const [canGoBack, setCanGoBack] = useState(false);
 
-  const job = jobs[currentIndex] || null;
+  const job = jobs[currentIndex] ?? null;
 
   const handleSwipe = async () => {
     await queryClient.invalidateQueries({ queryKey: ['jobs'] });
@@ -59,13 +59,13 @@ export default function Jobs() {
   const swipe = async (dir: 'left' | 'right') => {
     if (canSwipe && currentIndex >= 0) {
       if (childRefs[currentIndex]?.current) {
-        childRefs[currentIndex].current.swipe(dir);
+        void childRefs[currentIndex].current.swipe(dir);
       }
     }
   };
 
   const childRefs = useMemo(
-    () => Array(jobs.length).fill(0).map(() => React.createRef() as MutableRefObject<{ swipe: (dir: 'left' | 'right') => void }>),
+    () => Array(jobs.length).fill(0).map(() => React.createRef() as MutableRefObject<{ swipe: (dir: 'left' | 'right') => Promise<void>; restoreCard: () => Promise<void> }>),
     [jobs.length]
   );
 
