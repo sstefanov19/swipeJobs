@@ -13,7 +13,7 @@ interface Job {
 
 const JobCard: React.FC<Job> = (props) => {
   return (
-    <div className="bg-slate-800 w-[600px] h-[300px] rounded-lg overflow-hidden shadow-lg">
+    <div className="bg-slate-800 w-[600px] h-[300px] rounded-lg overflow-hidden shadow-sm ">
     <div className="p-6">
       <h2 className="text-2xl font-semibold text-slate-100 mb-2">{props.title}</h2>
       <p className="text-slate-300 mb-4">{props.description}</p>
