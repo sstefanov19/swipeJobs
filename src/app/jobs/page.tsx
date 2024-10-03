@@ -86,7 +86,7 @@ export default function Jobs() {
           </div>
         ) : jobs.length > 0 ? (
           <div className="flex flex-col items-center">
-            <div className="cardContainer w-[600px] h-[300px] mb-5">
+            <div className="cardContainer md:w-[600px] w-[350px] md:h-[300px] h-[400px] mb-5">
               {jobs.map((job, index) => (
                 <TinderCard
                   ref={childRefs[index]}

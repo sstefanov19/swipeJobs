@@ -12,13 +12,7 @@ export default function Header() {
           SwipeHire
         </h1>
       </Link>
-      <nav className="hidden space-x-4 sm:flex">
-        <Link
-          href="/demo"
-          className="text-slate-800 transition-colors hover:text-white"
-        >
-          Card Demo
-        </Link>
+      <nav className="space-x-4 flex ">
         <Link
           href="/jobs"
           className="text-slate-800 transition-colors hover:text-white"
