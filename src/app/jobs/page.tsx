@@ -47,7 +47,7 @@ export default function Jobs() {
   };
 
   const childRefs = useMemo(
-    () => Array(1).fill(0).map(() => React.createRef<TinderCard>()),
+    () => Array(1).fill(0).map(() => React.createRef<typeof TinderCard>()),
     []
   );
 
