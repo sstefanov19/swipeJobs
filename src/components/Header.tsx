@@ -14,10 +14,10 @@ export default function Header() {
       </Link>
       <nav className="hidden space-x-4 sm:flex">
         <Link
-          href="/about"
+          href="/demo"
           className="text-slate-800 transition-colors hover:text-white"
         >
-          About
+          Card Demo
         </Link>
         <Link
           href="/jobs"

@@ -14,6 +14,10 @@ export default {
   			md: 'calc(var(--radius) - 2px)',
   			sm: 'calc(var(--radius) - 4px)'
   		},
+          boxShadow: {
+            'lg': '0px 0px 60px 0px rgba(0,0,0,0.30)',
+            'md': '0px 0px 30px 0px rgba(0,0,0,0.10)',
+          },
   		colors: {
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
@@ -55,7 +59,21 @@ export default {
   				'4': 'hsl(var(--chart-4))',
   				'5': 'hsl(var(--chart-5))'
   			}
-  		}
+  		},
+          animation: {
+            popup: 'popup 800ms',
+          },
+          keyframes: {
+            popup: {
+              '0%': { transform: 'scale(1,1)' },
+              '10%': { transform: 'scale(1.1,1.1)' },
+              '30%': { transform: 'scale(.9,.9)' },
+              '50%': { transform: 'scale(1,1)' },
+              '57%': { transform: 'scale(1,1)' },
+              '64%': { transform: 'scale(1,1)' },
+              '100%': { transform: 'scale(1,1)' },
+            },
+          },
   	}
   },
   plugins: [require("tailwindcss-animate")],
