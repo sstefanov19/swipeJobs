@@ -10,6 +10,7 @@ interface Job {
     description: string;
     redirect_url?: string; // Make redirect_url optional
   }
+import QueryProvider from "~/components/QueryProvider";
 
 const JobCard: React.FC<Job> = (props) => {
   return (

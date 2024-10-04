@@ -20,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${GeistSans.variable}`}>
     <Toaster />
-      <body className="bg-slate-200">
+      <body className="bg-slate-200 overflow-x-hidden">
         <QueryProvider>
         <ClerkProvider>
           <Header />
