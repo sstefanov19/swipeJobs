@@ -29,8 +29,9 @@ export default function Jobs() {
   const [currentIndex, setCurrentIndex] = useState(jobs.length - 1);
   const [canSwipe, setCanSwipe] = useState(true);
   const [canGoBack, setCanGoBack] = useState(false);
+  const [swipedJobs , setSwipedJobs] = useState<Set<number>>(new Set());
 
-  const job = jobs[currentIndex] ?? null;
+
 
   const handleSwipe = async () => {
     await queryClient.invalidateQueries({ queryKey: ['jobs'] });
@@ -41,16 +42,18 @@ export default function Jobs() {
     setCurrentIndex(index - 1);
     setCanSwipe(index - 1 >= 0);
     setCanGoBack(true);
+    setSwipedJobs((prev) => new Set(prev).add(index));
+
   };
 
   const outOfFrame = (name: string, idx: number) => {
     console.log(`${name} (${idx}) left the screen!`);
-    void handleSwipe();
   };
+
 
   const goBack = () => {
     if (!canGoBack) return;
-    const newIndex = currentIndex + 1;
+    const newIndex = currentIndex +1;
     setCurrentIndex(newIndex);
     setCanSwipe(true);
     setCanGoBack(newIndex < jobs.length - 1);
@@ -88,6 +91,7 @@ export default function Jobs() {
           <div className="flex flex-col items-center">
             <div className="cardContainer md:w-[600px] w-[350px] md:h-[300px] h-[400px] mb-5">
               {jobs.map((job, index) => (
+                !swipedJobs.has(index) && (
                 <TinderCard
                   ref={childRefs[index]}
                   className="swipe absolute"
@@ -97,6 +101,7 @@ export default function Jobs() {
                 >
                   <JobCard {...job} handleSwipe={handleSwipe} />
                 </TinderCard>
+                )
               ))}
             </div>
             <div className="buttons flex flex-wrap justify-center m-5">

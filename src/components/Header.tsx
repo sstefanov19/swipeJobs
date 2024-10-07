@@ -25,6 +25,12 @@ export default function Header() {
         >
           Contact
         </Link>
+        <Link
+          href="/saved-jobs"
+          className="text-slate-800 transition-colors hover:text-white"
+        >
+          Saved Jobs
+        </Link>
       </nav>
       <div className="flex mr-2 space-x-2">
         {!isSignedIn && (
