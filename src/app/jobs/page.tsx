@@ -6,7 +6,7 @@ import { useQuery, useQueryClient } from '@tanstack/react-query';
 import JobCard from '~/components/JobCard';
 
 interface Job {
-  id: string;
+  id: number;
   title: string;
   location: { display_name: string };
   description: string;
