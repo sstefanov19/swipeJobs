@@ -13,6 +13,17 @@ interface Job {
   redirect_url?: string;
 }
 
+const saveJob = async(job : Job) => {
+    await axios.post('/api/savedJobs', job, {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }).then((response) => {
+        console.log(response.data);
+    }).catch((error) => console.log(error , "Error"));
+}
+
+
 const fetchJobs = async (): Promise<Job[]> => {
   const response = await axios.get<{ results: Job[] }>('/api/jobs');
   return response.data.results;
@@ -37,12 +48,17 @@ export default function Jobs() {
     await queryClient.invalidateQueries({ queryKey: ['jobs'] });
   };
 
-  const swiped = (direction: string, nameToDelete: string, index: number) => {
+  const swiped = async (direction: string, job: Job, index: number) => {
     setLastDirection(direction);
     setCurrentIndex(index - 1);
     setCanSwipe(index - 1 >= 0);
     setCanGoBack(true);
     setSwipedJobs((prev) => new Set(prev).add(index));
+
+    if(direction === 'left') {
+        await saveJob(job)
+
+    }
 
   };
 
@@ -65,6 +81,8 @@ export default function Jobs() {
         void childRefs[currentIndex].current.swipe(dir);
       }
     }
+
+
   };
 
   const childRefs = useMemo(
@@ -74,7 +92,7 @@ export default function Jobs() {
 
   return (
     <main className="flex min-h-screen w-full justify-center px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-600 to-slate-400">
-      <div className="w-full max-w-2xl">
+      <div className="w-full max-w-3xl">
         <h1 className="mb-8 text-3xl font-bold text-center mt-16 text-slate-100">Job Listings</h1>
         {isLoading ? (
           <div className="bg-slate-800 rounded-lg p-6  animate-pulse">
@@ -89,14 +107,14 @@ export default function Jobs() {
           </div>
         ) : jobs.length > 0 ? (
           <div className="flex flex-col items-center">
-            <div className="cardContainer md:w-[600px] w-[350px] md:h-[300px] h-[400px] mb-5">
+            <div className="cardContainer md:w-[600px] w-[350px] md:h-[300px] h-[500px] cursor-pointer mb-5">
               {jobs.map((job, index) => (
                 !swipedJobs.has(index) && (
                 <TinderCard
                   ref={childRefs[index]}
                   className="swipe absolute"
                   key={job.id}
-                  onSwipe={(dir) => swiped(dir, job.title, index)}
+                  onSwipe={(dir) => swiped(dir, job, index)}
                   onCardLeftScreen={() => outOfFrame(job.title, index)}
                 >
                   <JobCard {...job} handleSwipe={handleSwipe} />
